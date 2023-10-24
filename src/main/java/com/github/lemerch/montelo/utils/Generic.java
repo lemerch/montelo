@@ -12,18 +12,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ⠀⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣶⣾⣿⣿⣿⣿⣿⣶⡆⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡏⢤⡎⣿⣿⢡⣶⢹⣧⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣶⣶⣇⣸⣷⣶⣾⣿⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⢟⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡏⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣜⠿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣷⣿⡿⣷⣮⣙⠿⣿⣿⣿⣿⣿⡄⠀
- * ⠀⠀⠠⢄⣀⡀⠀⠀⠀⠀⠀⠈⠫⡯⢿⣿⣿⣿⣶⣯⣿⣻⣿⣿⠀
- * ⠀⠀⠤⢆⠆⠈⠉⠳⠤⣄⡀⠀⠀⠀⠙⢻⣿⣿⠿⠿⠿⢻⣿⠙⠇
- *  ⠠⠤⣉⣁⣢⣄⣀⣀⣤⣿⠷⠦⠤⣠⡶⠿⣟⠀⠀⠀⠀⠻⡀⠀
- * ⠀⠀⠔⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⠃⠉⠉⠛⠛⠿⢷⡶⠀
+ *
+ *        .-``'.
+ *      .`   .`~  Montelo~
+ *  _.-'     '._          x(n+1) = rx(1-x)
+ *
  */
 package com.github.lemerch.montelo.utils;
 
@@ -39,13 +32,13 @@ import java.util.List;
 /**
  * <h3>Generic is a simple class for processing, iterating and conveniently storing data about a generic type</h3>
  * <p>
- *     This class consists essentially of a constructor and two simple methods: {@link Generic#get()}, {@link Generic#next()}.
+ *     This class consists essentially of a constructor and two simple methods: {@link Generic#getList()}, {@link Generic#next()}.
  *     The main value here is a constructor that overwrites data about a generic type in a convenient form for subsequent processing.
  * </p>
  * <p>The constructor simply parses the value from type.getTypeName()</p>
  */
 public final class Generic {
-    private List<Class<?>> generics;
+    private final List<Class<?>> generics;
     public Generic(Type type) throws CommonMonteloException {
 
         String all = type.getTypeName();
@@ -92,12 +85,12 @@ public final class Generic {
      * @throws GenericException when list size >= 1
      */
     public Generic next() throws CommonMonteloException {
-        if (this.generics.size() >= 1) {
-            List<Class<?>> newlist = new ArrayList<>(this.generics.size());
+        if (!this.generics.isEmpty()) {
+            List<Class<?>> newlist = new ArrayList<>(this.generics.size()-1);
             for (int i = 1; i < this.generics.size(); i++) newlist.add(this.generics.get(i));
             return new Generic(newlist);
         }else {
-            throw new GenericException("generic next iteration cannot be processed because it last iteration");
+            throw new GenericException("Next iteration cannot be processed because it last iteration");
         }
     }
 }

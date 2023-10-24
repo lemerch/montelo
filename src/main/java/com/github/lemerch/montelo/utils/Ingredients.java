@@ -12,18 +12,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ⠀⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣶⣾⣿⣿⣿⣿⣿⣶⡆⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡏⢤⡎⣿⣿⢡⣶⢹⣧⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣶⣶⣇⣸⣷⣶⣾⣿⠀⠀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⢟⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡏⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣜⠿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀
- * ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣷⣿⡿⣷⣮⣙⠿⣿⣿⣿⣿⣿⡄⠀
- * ⠀⠀⠠⢄⣀⡀⠀⠀⠀⠀⠀⠈⠫⡯⢿⣿⣿⣿⣶⣯⣿⣻⣿⣿⠀
- * ⠀⠀⠤⢆⠆⠈⠉⠳⠤⣄⡀⠀⠀⠀⠙⢻⣿⣿⠿⠿⠿⢻⣿⠙⠇
- *  ⠠⠤⣉⣁⣢⣄⣀⣀⣤⣿⠷⠦⠤⣠⡶⠿⣟⠀⠀⠀⠀⠻⡀⠀
- * ⠀⠀⠔⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⠃⠉⠉⠛⠛⠿⢷⡶⠀
+ *
+ *        .-``'.
+ *      .`   .`~  Montelo~
+ *  _.-'     '._          x(n+1) = rx(1-x)
+ *
  */
 package com.github.lemerch.montelo.utils;
 
@@ -31,7 +24,7 @@ package com.github.lemerch.montelo.utils;
 import java.lang.annotation.Annotation;
 
 /**
- * <h3>This class is a simple IMMUTABLE container for transport information about field that Heart.dinner want to fill into Fillen.Diet.menu(...)</h3>
+ * <h3>This class is a simple IMMUTABLE, NULL SAFETY container for transport information about field</h3>
  *
  * <p>It contains:
  *  <ul>
@@ -43,11 +36,6 @@ import java.lang.annotation.Annotation;
  *  </ul>
  * </p>
  *
- * <p>
- *     Its peculiarity lies in the fact that its fields are public,
- *     but they are not changeable,
- *     since each setter creates a new object - this is done for the convenience and security of user handlers in {@link Fillen.Diet}
- * </p>
  */
 public final class Ingredients {
 
