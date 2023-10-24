@@ -90,7 +90,7 @@ public final class Generic {
             for (int i = 1; i < this.generics.size(); i++) newlist.add(this.generics.get(i));
             return new Generic(newlist);
         }else {
-            throw new GenericException("generic next iteration cannot be processed because it last iteration");
+            throw new GenericException("Next iteration cannot be processed because it last iteration");
         }
     }
 }
