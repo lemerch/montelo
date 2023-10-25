@@ -6,7 +6,7 @@
 
     <groupId>com.github.lemerch</groupId>
     <artifactId>montelo</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <description>x(n+1) = rx(1-x)</description>
 
