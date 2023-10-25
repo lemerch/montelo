@@ -28,7 +28,7 @@ In this library, a simple concept of modules is described. You can create your o
     <dependency>
           <groupId>com.github.lemerch</groupId>
           <artifactId>montelo</artifactId>
-          <version>1.0</version>
+          <version>1.1</version>
     </dependency>
 </dependencies>
 ```
