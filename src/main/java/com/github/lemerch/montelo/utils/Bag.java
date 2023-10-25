@@ -35,9 +35,9 @@ import java.util.function.Consumer;
  * <h3>Bag is a collection that accept objects {@link Montelo}</h3>
  * <h3>Warrning - montelos objects can not be repeat in one bag</h3>
  */
-public final class Bag implements Iterable<Montelo> {
+public final class Bag<T extends Montelo> implements Iterable<T> {
 
-    private List<Montelo> bag;
+    private List<T> bag;
 
     public Bag() {
         this.bag = new ArrayList<>();
@@ -46,7 +46,7 @@ public final class Bag implements Iterable<Montelo> {
         this.bag = new ArrayList<>(size);
     }
 
-    public boolean add(Montelo montelo) throws CommonMonteloException {
+    public boolean add(T montelo) throws CommonMonteloException {
         try {
             get(montelo.getClass());
             throw new MonteloAlreadyExistException(montelo.getClass().toString());
@@ -55,9 +55,9 @@ public final class Bag implements Iterable<Montelo> {
         }
     }
 
-    public void addAll(Bag bag) { this.bag.addAll(bag.getInner()); }
+    public void addAll(Bag<T> bag) { this.bag.addAll(bag.getInner()); }
 
-    public Montelo remove(int index) { return this.bag.remove(index); }
+    public T remove(int index) { return this.bag.remove(index); }
 
     public Montelo remove(Class<? extends Montelo> associated) throws CommonMonteloException {
         int index = 0;
@@ -72,12 +72,12 @@ public final class Bag implements Iterable<Montelo> {
     }
 
 
-    public Montelo get(int index) {
+    public T get(int index) {
         return this.bag.get(index);
     }
 
-    public Montelo get(Class<? extends Montelo> associated) throws CommonMonteloException {
-        for (Montelo montel : this.bag) {
+    public T get(Class<? extends Montelo> associated) throws CommonMonteloException {
+        for (T montel : this.bag) {
             Class<? extends Montelo> an = montel.getClass();
             if (associated.getName().equals(an.getName()) && associated.getPackageName().equals(an.getPackageName())) {
                 return montel;
@@ -87,7 +87,7 @@ public final class Bag implements Iterable<Montelo> {
     }
 
     public boolean swap(int firstIndex, int secondIndex) {
-        Montelo temp = this.bag.get(firstIndex);
+        T temp = this.bag.get(firstIndex);
         this.bag.set(firstIndex, this.bag.get(secondIndex));
         this.bag.set(secondIndex, temp);
         return true;
@@ -99,7 +99,7 @@ public final class Bag implements Iterable<Montelo> {
         int firstIndex = 0, secondIndex = 0;
         int iterator = 0;
 
-        for (Montelo montel : this.bag) {
+        for (T montel : this.bag) {
             if (secondIndex != 0 && firstIndex != 0) break;
 
             Class<? extends Montelo> an = montel.getClass();
@@ -120,34 +120,34 @@ public final class Bag implements Iterable<Montelo> {
     }
 
     public boolean contains(Class<? extends Montelo> associated) {
-        for (Montelo montel : this.bag)
+        for (T montel : this.bag)
             if (montel.getClass().equals(associated)) return true;
 
         return false;
     }
-    public boolean contains(Montelo montelo) { return this.bag.contains(montelo); }
+    public boolean contains(T montelo) { return this.bag.contains(montelo); }
 
-    public Bag clone() {
-        Bag bag = new Bag();
+    public Bag<T> clone() {
+        Bag<T> bag = new Bag<>();
         bag.setInner(new ArrayList<>(this.bag));
         return bag;
     }
 
-    private List<Montelo> getInner() { return this.bag; }
-    private void setInner(List<Montelo> list) { this.bag = list; }
+    private List<T> getInner() { return this.bag; }
+    private void setInner(List<T> list) { this.bag = list; }
 
     @Override
-    public Iterator<Montelo> iterator() {
+    public Iterator<T> iterator() {
         return this.bag.iterator();
     }
 
     @Override
-    public void forEach(Consumer<? super Montelo> action) {
+    public void forEach(Consumer<? super T> action) {
         Iterable.super.forEach(action);
     }
 
     @Override
-    public Spliterator<Montelo> spliterator() {
+    public Spliterator<T> spliterator() {
         return Iterable.super.spliterator();
     }
 }
