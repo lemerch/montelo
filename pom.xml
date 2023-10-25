@@ -8,11 +8,28 @@
     <artifactId>montelo</artifactId>
     <version>1.0</version>
 
+    <description>x(n+1) = rx(1-x)</description>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Dmitry Terakov</name>
+            <email>toorkeor@gmail.com</email>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
